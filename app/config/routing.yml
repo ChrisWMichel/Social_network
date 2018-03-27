@@ -1,0 +1,16 @@
+app_homepage:
+    path: /
+    defaults: {_controller: AppBundle:User:login}
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+backend:
+    resource: "@BackendBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+#image:
+    #resource: "social_network/web/assets/images/ajax-loader.gif"
+

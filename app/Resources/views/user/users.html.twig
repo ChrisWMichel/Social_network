@@ -1,0 +1,118 @@
+{% extends 'base.html.twig' %}
+
+
+{% block content %}
+    <div class="col-lg-12 box-default">
+        <h2 class="page-header">Users</h2>
+
+        <div class="count">
+            <span class="label label-primary">
+              Total number of users:   {{ pagination.getTotalItemCount }}
+            </span>
+        </div>
+
+        <hr>
+
+        <div class="box-content box-users">
+            {% for user in pagination %}
+                <div class="col-lg-12 user-item">
+                    <div class="avatar">
+                        {% if(user.image == null) %}
+                            <img src="{{ asset('assets/images/default.jpg') }}">
+                        {% else %}
+                            <img src="{{ asset('uploads/users/' ~user.image ) }}" >
+                        {% endif %}
+
+                    </div>
+
+                    <div class="user-item-content">
+                        <h4><a class="user-link" href="{{ path('profile', {'nickname': user.nick}) }}">{{ user.firstname }} {{ user.lastname }}</a> - {{ user.nick }}</h4>
+
+                        <p>{{ user.bio }}</p>
+                    </div>
+
+                    {% if app.user.id != user.id %}
+
+                        <div class="pull-right buttons-following">
+                            <button class="btn btn-sm btn-success btn-follow
+                                    {% if app.user|following(user) == true %}
+                                        hidden
+                                    {% endif %}
+                                    "
+                                    data-followed="{{ user.id }}">
+
+                                <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+                                Follow
+                            </button>
+
+                            <button class="btn btn-sm btn-default btn-unfollow
+                                    {% if app.user|following(user) == false %}
+                                        hidden
+                                    {% endif %}
+                                    "
+                                    data-unfollowed="{{ user.id }}">
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                                Unfollow
+                            </button>
+                        </div>
+
+                    {% endif %}
+
+                    <div class="clearfix"></div>
+                    <hr/>
+                </div>
+
+            {% endfor %}
+        </div>
+
+        <div class="navigation">
+            {{ knp_pagination_render(pagination) }}
+        </div>
+        <div class="clearfix"></div>
+
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        const image_path = "{{ asset('assets/images/ajax-loader.gif') }}"
+    </script>
+    <script src="{{ asset('assets/js/custom/users.js') }}"></script>
+    <script>
+
+
+        function followButtons() {
+            $(".btn-follow").unbind("click").click(function(){
+                $(this).addClass("hidden");
+                $(this).parent().find(".btn-unfollow").removeClass('hidden');
+
+                $.ajax({
+                    url: "{{ (path('follow')) }}",
+                    type: 'POST',
+                    data: {followed: $(this).attr("data-followed")},
+                    success: function (response) {
+                        console.log(response);
+                    }
+
+                });
+            });
+
+            $(".btn-unfollow").unbind("click").click(function(){
+                $(this).addClass("hidden");
+                $(this).parent().find(".btn-follow").removeClass('hidden');
+
+                $.ajax({
+                    url: "{{ (path('unfollow')) }}",
+                    type: 'POST',
+                    data: {followed: $(this).attr("data-unfollowed")},
+                    success: function (response) {
+                        console.log(response);
+                    }
+
+                });
+            })
+        }
+
+
+    </script>
+{% endblock %}
