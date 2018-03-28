@@ -78,6 +78,22 @@ $(document).ready(function () {
                     console.log(response.status);
                 }
             });
+        });
+
+        $('.btn-delete-notice').unbind("click").click(function () {
+            //$(this).addClass("hidden");
+            //$(this).parent().find('.btn-like').removeClass("hidden");
+            const id = $(this).attr("notice-data");
+            $('#notification-row' + id).addClass("hidden");
+
+            $.ajax({
+                url: notificationRemove,
+                type: 'POST',
+                data: {id:  $(this).attr("notice-data")},
+                success: function (response) {
+                    console.log(response.status);
+                }
+            });
         })
     }
 });

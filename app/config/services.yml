@@ -51,3 +51,14 @@ services:
     user_stats.twig_extension:
         class: AppBundle\Twig\UserStatsExtension
         public: false
+
+    app.notification_service:
+        class: AppBundle\Services\NotificationService
+        public: true
+        arguments: ['@doctrine.orm.entity_manager']
+
+    get_user.twig_extention:
+        class: AppBundle\Twig\GetUserExtension
+        public: true
+        tags:
+            - {name: twig.extension}

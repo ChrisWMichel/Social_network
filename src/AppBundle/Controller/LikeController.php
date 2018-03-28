@@ -11,8 +11,6 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use BackendBundle\Entity\User;
-use BackendBundle\Entity\Publication;
 use BackendBundle\Entity\Like;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
@@ -37,6 +35,9 @@ class LikeController extends Controller{
         $flush = $em->flush();
 
         if($flush == NULL){
+            $notification = $this->get('app.notification_service');
+            $notification->set($publication->getUser(), 'like', $user->getId(), $publication->getId());
+
             $status = 'You like this post';
         }else{
             $status = 'Could not save the like.';

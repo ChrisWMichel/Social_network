@@ -43,7 +43,7 @@ class PublicationType extends AbstractType{
           ->add('document', FileType::class, [
             'data_class' => null,
             'required' => FALSE,
-            'label' => 'Document',
+            'label' => 'PDF Document',
             'attr' => [
               'class' => 'form-control'
             ]
