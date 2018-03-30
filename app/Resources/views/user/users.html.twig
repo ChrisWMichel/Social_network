@@ -74,20 +74,20 @@
 {% endblock %}
 
 {% block javascripts %}
-    <script>
-        const image_path = "{{ asset('assets/images/ajax-loader.gif') }}"
-    </script>
+
+
     <script src="{{ asset('assets/js/custom/users.js') }}"></script>
+    <script src="{{ asset('assets/js/custom/buttons-following.js') }}"></script>
     <script>
 
 
-        function followButtons() {
+        /*function followButtons() {
             $(".btn-follow").unbind("click").click(function(){
                 $(this).addClass("hidden");
                 $(this).parent().find(".btn-unfollow").removeClass('hidden');
 
                 $.ajax({
-                    url: "{{ (path('follow')) }}",
+                    url: "{#{{ (path('follow')) }}#}",
                     type: 'POST',
                     data: {followed: $(this).attr("data-followed")},
                     success: function (response) {
@@ -102,7 +102,7 @@
                 $(this).parent().find(".btn-follow").removeClass('hidden');
 
                 $.ajax({
-                    url: "{{ (path('unfollow')) }}",
+                    url: "{#{{ (path('unfollow')) }}#}",
                     type: 'POST',
                     data: {followed: $(this).attr("data-unfollowed")},
                     success: function (response) {
@@ -111,7 +111,7 @@
 
                 });
             })
-        }
+        }*/
 
 
     </script>

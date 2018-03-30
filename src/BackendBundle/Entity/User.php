@@ -7,6 +7,10 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
+ *
+ * @ORM\Entity(repositoryClass="BackendBundle\Repository\UserRepository")
+ * @ORM\Table(name="users")
+ *
  */
 class User implements UserInterface
 {
@@ -325,4 +329,3 @@ class User implements UserInterface
         return $this->image;
     }
 }
-

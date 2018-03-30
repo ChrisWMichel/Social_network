@@ -231,3 +231,19 @@ body{
     font-weight: bold;
 }
 
+.profile-box .buttons-following{
+    margin-top: 20px;
+}
+
+label {
+    margin-top: 20px;
+}
+
+.box-private-message input, .box-private-message textarea{
+    margin-bottom: 10px;
+}
+.private-message{
+    margin-left: 20px;
+    padding-left: 70px;
+
+}

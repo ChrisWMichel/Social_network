@@ -23,14 +23,16 @@ $(document).ready(function () {
     }));
 
     ias.on('ready',function (event) {
-        Buttons();
+        /*Buttons();*/
+        followButtons();
     });
 
     ias.on('rendered',function (event) {
-        Buttons();
+       /* Buttons();*/
+        followButtons();
     });
 
-    function Buttons() {
+    //function Buttons() {
         $(".btn-img").unbind("click").click(function () {
             $(this).parent().find('.pub-image').fadeToggle();
         });
@@ -77,5 +79,7 @@ $(document).ready(function () {
                 }
             });
         })
-    }
+    //}
+
+
 });

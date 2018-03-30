@@ -4,6 +4,8 @@ parameters:
     image_directory: '%kernel.project_dir%/web/uploads/users'
     publication_image_directory: '%kernel.project_dir%/web/uploads/image_publications'
     publication_document_directory: '%kernel.project_dir%/web/uploads/documents'
+    message_image_directory: '%kernel.project_dir%/web/uploads/image_message'
+    message_document_directory: '%kernel.project_dir%/web/uploads/document_message'
 
 services:
     # default configuration for services in *this* file

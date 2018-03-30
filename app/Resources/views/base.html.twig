@@ -77,18 +77,17 @@
                         {% if app.user != null %}
                             <ul class="nav navbar-nav navbar-right">
                                 <li>
-                                    <a href="{{ path('userList') }}">
+                                    <a href="{{ path('private_message') }}">
                                         <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
-                                        Private Message
+                                            Private Message
+                                        <span class="label label-success label-notification-msg"></span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{ path('notification') }}">
                                         <span class="glyphicon glyphicon-bell" aria-hidden="true"></span>
                                         Notifications
-                                        <span class="label label-success label-notification">
-
-                                        </span>
+                                        <span class="label label-success label-notification"></span>
                                     </a>
                                 </li>
 
@@ -168,7 +167,16 @@
         {% block javascripts %}{% endblock %}
         <script type="text/javascript">
             const notification = "{{ path('notificationCount') }}";
+            const not_read_messages = "{{ path('not_read_count') }}";
             const URL = "{{ app.request.getSchemeAndHttpHost() }}/social_network/web/app_dev.php";
+        </script>
+        <script>
+            const follow = "{{ (path('follow')) }}";
+            const unfollow = "{{ (path('unfollow')) }}";
+            const image_path = "{{ asset('assets/images/ajax-loader.gif') }}";
+            const remove_publication = "{{ path('removePublication') }}";
+            const like_post = "{{ path('like') }}";
+            const unlike_post = "{{ path('unlike') }}";
         </script>
     <script src="{{ asset('assets/js/custom/common.js') }}"></script>
 
