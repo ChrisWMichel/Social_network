@@ -116,9 +116,7 @@ class User implements UserInterface
      */
     public function getRole()
     {
-        //return array('USER', 'ADMIN');
-        return array($this->role);
-        //return $this->role;
+        return ['ROLE_USER', 'ROLE_ADMIN'];
     }
 
     public function serializable(){

@@ -8,11 +8,7 @@
             {#<h4>Sent Messages</h4>#}
             <br/>
             <a href="{{ path('private_message') }}" class="btn btn-warning">See received messages</a>
-
         </div>
-        <h2 class="page-header">Private Message</h2>
-
-
 
         <div class="col-lg-6">
             <h4 class="page-header">Sent Messages</h4>
@@ -33,7 +29,8 @@
                                 <a class="pub-name-link" href="{{ path('profile', {'nickname': message.emitter.nick}) }}">
                                     {{ message.emitter.firstname }} {{ message.emitter.lastname }}
                                 </a>
-                                - {{ message.emitter.nick }}
+                                -
+                                    For  <a style="font-weight: bold;" href="{{ path('profile', {'nickname': message.receiver.nick}) }}">{{ message.receiver.nick }}</a>
                                 -
                                 <span class="pub-dates">
                             Posted {{ message.createdAt| long_time }} ago {#At {{ message.createdAt| date(' g:ia') }}#}

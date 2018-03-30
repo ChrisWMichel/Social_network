@@ -101,7 +101,7 @@ class UserController extends Controller {
                 );
 
                 $user->setPassword($password);
-                $user->setRole("USER");
+                $user->setRole("ROLE_USER");
                 $user->setImage(NULL);
 
                 $em->persist($user);

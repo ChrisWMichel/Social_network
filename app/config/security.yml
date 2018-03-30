@@ -29,6 +29,28 @@ security:
             logout:
                 path: logout
                 target: /
+
+    access_control:
+        - {path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY}
+        - {path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY}
+        - {path: ^/home, roles: [ROLE_USER, ROLE_ADMIN]}
+        - {path: ^/remove-publication, roles: [ROLE_USER, ROLE_ADMIN]}
+        - {path: ^/edit-user, roles: [ROLE_USER, ROLE_ADMIN]}
+        - {path: ^/user-list, roles: [ROLE_USER, ROLE_ADMIN]}
+        - {path: ^/user-search, roles: [ROLE_USER, ROLE_ADMIN]}
+        - {path: ^/user, roles: [ROLE_USER, ROLE_ADMIN]}
+        - {path: ^/like, roles: [ROLE_USER, ROLE_ADMIN]}
+        - {path: ^/unlike, roles: [ROLE_USER, ROLE_ADMIN]}
+        - {path: ^/notification, roles: [ROLE_USER, ROLE_ADMIN]}
+        - {path: ^/notification/count, roles: [ROLE_USER, ROLE_ADMIN]}
+        - {path: ^/notification/remove, roles: [ROLE_USER, ROLE_ADMIN]}
+        - {path: ^/private-message, roles: [ROLE_USER, ROLE_ADMIN]}
+        - {path: ^/sent, roles: [ROLE_USER, ROLE_ADMIN]}
+        - {path: ^/private-message/not-read, roles: [ROLE_USER, ROLE_ADMIN]}
+        - {path: ^/following, roles: [ROLE_USER, ROLE_ADMIN]}
+        - {path: ^/followed, roles: [ROLE_USER, ROLE_ADMIN]}
+        - {path: ^/unfollow, roles: [ROLE_USER, ROLE_ADMIN]}
+        - {path: ^/likes, roles: [ROLE_USER, ROLE_ADMIN]}
             # activate different ways to authenticate
 
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
